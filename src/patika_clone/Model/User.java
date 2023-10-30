@@ -278,4 +278,27 @@ public class User {
         }
         return  id;
     }
+    public static boolean signUp(String name,String username,String password,String  type){
+
+        String query = "INSERT INTO user (name,username,password,type) VALUES (?,?,?,'student')";
+        User findUser = User.getFetch(username);
+        if (findUser != null){
+            Helper.showMsg("This username has already in use !");
+            return false;
+        }
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setString(1,name);
+            pr.setString(2,username);
+            pr.setString(3,password);
+            int response = pr.executeUpdate();
+            if (response==-1){
+                Helper.showMsg("error");
+            }
+            return response !=-1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());;
+        }
+        return true;
+    }
 }

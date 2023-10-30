@@ -16,11 +16,15 @@ public class LoginGUI extends  JFrame{
     public  JTextField field_user_username_pb;
     public JPasswordField field_user_password_pb;
     private JButton button_login;
+    private JTextField field_signup_name;
+    private JTextField field_signup_username;
+    private JPasswordField field_signup_password;
+    private JButton signUpButton;
 
 
     public LoginGUI(){
         add(wrapper);
-        setSize(500,500);
+        setSize(500,700);
         setLocation(Helper.screenCenter("x",getSize()),Helper.screenCenter("y",getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle(Config.PROJECT_TITLE);
@@ -51,6 +55,13 @@ public class LoginGUI extends  JFrame{
 
             }
 
+        });
+        signUpButton.addActionListener(e -> {
+            boolean u = User.signUp(field_signup_name.getText().toString(),field_signup_username.getText().toString(),field_signup_password.getText().toString(),"student");
+            field_signup_name.setText(null);
+            field_signup_username.setText(null);
+            field_signup_password.setText(null);
+            Helper.showMsg("Signed Up!");
         });
     }
 

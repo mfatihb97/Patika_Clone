@@ -9,6 +9,8 @@ import patika_clone.Model.StudentCourse;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class StudenGUI extends JFrame {
@@ -23,6 +25,7 @@ public class StudenGUI extends JFrame {
     private JTextField field_choose_patika;
     private JButton addButton;
     private JTable table_own_course;
+    private JButton exitButton;
     private DefaultTableModel model_stu_patika;
     private Object[] row_stu_patika;
     private int id;
@@ -84,6 +87,10 @@ public class StudenGUI extends JFrame {
                 StudentCourse.addCourse(StudentCourse.getFetch(ID));
                 loadOwnCourses();
             }
+        });
+        exitButton.addActionListener(e -> {
+            dispose();
+            LoginGUI login = new LoginGUI();
         });
     }
 
