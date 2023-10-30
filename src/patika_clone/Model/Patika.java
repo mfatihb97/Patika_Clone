@@ -131,4 +131,8 @@ public class Patika {
         return courseList;
     }
 
+    public String toString(){
+        return name;
+    }
+
 }

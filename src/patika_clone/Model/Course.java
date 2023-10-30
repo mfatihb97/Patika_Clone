@@ -28,6 +28,13 @@ public class Course {
         this.educator = User.getFetch(user_id);
     }
 
+    public Course(int id,int patika_id, String name, String language) {
+        this.id = id;
+        this.patika_id = patika_id;
+        this.name = name;
+        this.language = language;
+    }
+
     public Course() {
 
     }
